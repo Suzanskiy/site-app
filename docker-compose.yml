@@ -24,3 +24,8 @@ services:
     ports:
       - "5434:5432"
     restart: unless-stopped
+    volumes:
+      - gravit-data:/var/lib/postgresql/data
+
+volumes:
+      gravit-data:
