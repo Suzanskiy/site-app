@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  gravitlauncher:
+    image: launcher
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    depends_on:
+      - gravit-db
+    environment:
+      - SERVER_PORT=8080
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://gravit-db:5432/gravitdb
+      - SPRING_DATASOURCE_USERNAME=thereayo
+      - SPRING_DATASOURCE_PASSWORD=6452254
+
+  gravit-db:
+    image: postgres:14.7-alpine
+    environment:
+      POSTGRES_DB: gravitdb
+      POSTGRES_USER: thereayo
+      POSTGRES_PASSWORD: 6452254
+    ports:
+      - "5434:5432"
+    restart: unless-stopped
