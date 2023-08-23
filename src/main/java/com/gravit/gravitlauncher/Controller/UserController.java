@@ -23,7 +23,7 @@ public ResponseEntity<String> registerUser(@RequestParam String userName, @Reque
     userDTO.setPassword(password);
     try{
         userService.registerUser(userDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>("Welcome, dear user - " + userDTO.getUserName(), HttpStatus.CREATED);
     } catch (RuntimeException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
@@ -36,6 +36,12 @@ public ResponseEntity<String> registerUser(@RequestParam String userName, @Reque
         } else {
             return new ResponseEntity<>("Bad login or password", HttpStatus.BAD_REQUEST);
         }
+}
+
+@GetMapping("/isUserNameAvailable")
+    public ResponseEntity<Boolean> isUserNameAvailable(@RequestParam String userName){
+        boolean isAvalible = userService.isUserNameAvailable(userName);
+        return new ResponseEntity<>(isAvalible, HttpStatus.OK);
 }
 
 }

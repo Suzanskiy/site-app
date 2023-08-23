@@ -6,12 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ViewController {
 
+    @GetMapping("/")
+    public String homePage() {
+            return "redirect:/login";
+        }
+
     @GetMapping("/login")
     public String showLoginPage() {
-        return "newLogin.html";
+        return "homePage.html";
     }
     @GetMapping("/registration")
     public String showRegistrationPage(){
-        return "newRegistration.html";
+        return "homePage.html";
     }
 }

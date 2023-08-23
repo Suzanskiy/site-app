@@ -7,6 +7,8 @@ import com.gravit.gravitlauncher.Mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -33,6 +35,12 @@ public class UserServiceImpl implements UserService{
         UserEntity userEntity = userRepository.findByUserNameIgnoreCase(userName).
                 orElseThrow(() -> new RuntimeException("User - " + userName + " not found"));
         return userMapper.userToDTO(userEntity);
+    }
+
+    @Override
+    public Boolean isUserNameAvailable(String userName) {
+        Optional<UserEntity> userEntity = userRepository.existsUserEntityByUserNameIgnoreCase(userName);
+        return !userEntity.isPresent();
     }
 
     public Boolean loginUser (String userName, String rawPassword) {

@@ -9,4 +9,6 @@ public interface UserService {
     UserDTO findByUserName(String userName);
 
     Boolean loginUser(String userName, String rawPassword);
+
+    Boolean isUserNameAvailable (String userName);
 }
