@@ -1,82 +1,70 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>DailyUI #001 - Sign Up</title>
+  <title>Login & Registration</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class='box'>
-  <div class='box-form'>
-    <div class='box-login-tab'></div>
-    <div class='box-login-title'>
-      <div class='i i-login'></div><h2>LOGIN</h2>
-    </div>
-    <div class='box-login'>
-      <div class='fieldset-body' id='login_form'>
-        <button onclick="openLoginInfo();" class='b b-form i i-more' title='Mais Informações'></button>
-        <form action="/login" method="post" id='login_formm'>
-        <p class='field'>
-          <label for='userName'>USERNAME</label>
-          <input type='text' id='userName' name='userName' maxlength="15" title='Username' />
-          <span id='validaa' class='i i-warning'></span>
-        </p>
-        <p class='field'>
-          <label for='password'>PASSWORD</label>
-          <input type='password' id='password' name='password' maxlength="15" title='Password' />
-          <span id='valida' class='i i-close'></span>
-          <input type='submit' id='do_login' value='GET STARTED' title='Get Started' />
-        </p>
-        </form>
-
-        <label class='checkbox'>
-          <input type='checkbox' value='TRUE' title='Keep me Signed in' /> Keep me Signed in
-        </label>
-
-
+<div class='container'>
+  <div class='login-section'>
+    <h2>Login</h2>
+    <form action="/login" method="post" id='login_form'>
+      <div class='field'>
+        <label for='userName'>Username</label>
+        <input type='text' id='userName' name='userName' maxlength="15" title='Username'>
+        <span id='validaa' class='i i-warning'></span>
       </div>
-    </div>
+      <div class='field'>
+        <label for='password'>Password</label>
+        <input type='password' id='password' name='password' maxlength="15" title='Password'>
+        <span id='valida' class='i i-close'></span>
+      </div>
+      <div class='field'>
+        <input type='submit' id='do_login' value='Login'>
+      </div>
+      <div class='field'>
+        <label class='checkbox'>
+          <input type='checkbox' value='TRUE' title='Keep me Signed in'> Keep me Signed in
+        </label>
+      </div>
+    </form>
+    <a href="#" title="Forgot Password?">Forgot Password?</a>
   </div>
-  <div class='box-info'>
-    <p><button onclick="closeLoginInfo();" class='b b-info i i-left' title='Back to Sign In'></button><h3>Need Help?</h3>
-    </p>
-    <div class='line-wh'></div>
-    <button onclick="" class='b-support' title='Forgot Password?'> Forgot Password?</button>
-    <button onclick="" class='b-support' title='Contact Support'> Contact Support</button>
-    <div class='line-wh'></div>
-    <button onclick="" class='b-cta' title='Sign up now!'> CREATE ACCOUNT</button>
+
+  <div class='register-section'>
+    <h2>Register</h2>
     <form action="/registration" method="post" id='register_form'>
-        <div class='fieldset-body'>
-          <p class='field'>
-            <label for='userName'>USERNAME</label>
-            <input type='text' id='ReguserName' name='userName' maxlength="10" title='Username for registration' required onblur="checkUserNameAvailability()" />
-           <span id = "userNameMessage"> </span>
-            <span id='userNameLengthWarning' style="color: red;"></span>
-          </p>
-          <p class='field'>
-            <label for='email'>EMAIL</label>
-            <input type='email' id='email' name='email' maxlength="20" title='Email for registration' required onblur="checkEmailAvailability()" />
-            <span id = "emailMessage"> </span>
-            <span id="userEmailLengthWarning" style="color: red;"></span>
-          </p>
-          <p class='field'>
-            <label for='password'>PASSWORD</label>
-            <input type='password' id='Regpassword' name='password' title='Password for registration' required />
-          </p>
-          <input type='submit' value='REGISTER' title='Register' />
-        </div>
-      </form>
+      <div class='field'>
+        <label for='ReguserName'>Username</label>
+        <input type='text' id='ReguserName' name='userName' maxlength="10" title='Username for registration' required onblur="checkUserNameAvailability()">
+        <span id='userNameMessage'></span>
+        <span id='userNameLengthWarning' style="color: red;"></span>
+      </div>
+      <div class='field'>
+        <label for='email'>Email</label>
+        <input type='email' id='email' name='email' maxlength="20" title='Email for registration' required onblur="checkEmailAvailability()">
+        <span id='emailMessage'></span>
+        <span id="userEmailLengthWarning" style="color: red;"></span>
+      </div>
+      <div class='field'>
+        <label for='Regpassword'>Password</label>
+        <input type='password' id='Regpassword' name='password' title='Password for registration' required>
+      </div>
+      <div class='field'>
+        <input type='submit' value='Register'>
+      </div>
+    </form>
   </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/checkUserNameAvailability.js"></script>
 <script src="js/checkEmailAvailability.js"></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
 <script src="js/index.js"></script>
-
 </body>
 </html>
