@@ -5,6 +5,8 @@ import lombok.*;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+
 
 @Entity(name = "users")
 @Getter
@@ -24,5 +26,14 @@ public class UserEntity {
     private String email;
     @Column (name = "password", nullable = false)
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable (
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn (name = "role_id")
+    )
+
+    private Collection<Role> roles;
 
 }

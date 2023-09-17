@@ -1,22 +1,30 @@
 package com.gravit.gravitlauncher.Services.UserService;
 
+import com.gravit.gravitlauncher.DB.DAO.RoleRepository;
 import com.gravit.gravitlauncher.DB.DAO.UserRepository;
 import com.gravit.gravitlauncher.DB.DTO.UserDTO;
 import com.gravit.gravitlauncher.Entity.UserEntity;
 import com.gravit.gravitlauncher.Mapper.UserMapper;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
+
+    @Autowired
+    private final RoleRepository roleRepository;
 
     @Override
     public UserEntity registerUser(UserDTO userDTO) {
@@ -27,6 +35,7 @@ public class UserServiceImpl implements UserService{
         userEntity.setUserName(userDTO.getUserName());
         userEntity.setEmail(userDTO.getEmail());
         userEntity.setPassword(userDTO.getPassword());
+        userEntity.setRoles(List.of(roleRepository.findByRoleName("ROLE_USER").get()));
         return userRepository.save(userEntity);
     }
 
