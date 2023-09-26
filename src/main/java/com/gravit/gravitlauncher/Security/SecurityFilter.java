@@ -43,7 +43,7 @@ public class SecurityFilter {
                        .usernameParameter("userName")
                        .passwordParameter("password")
                        .loginPage("/api/login")
-                       .defaultSuccessUrl("/api/afterLoginPage"))
+                       .defaultSuccessUrl("/api/afterLoginPage", true))
                .sessionManagement(session  -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                .authenticationProvider(autenticaltionProvider)
                .build();

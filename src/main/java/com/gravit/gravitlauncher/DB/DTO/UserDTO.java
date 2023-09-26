@@ -21,5 +21,6 @@ public class UserDTO {
     private String email;
     private String password;
     private Collection<String> roleNames;
+    private boolean isEmailVerify = false;
 
 }

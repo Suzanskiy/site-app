@@ -28,6 +28,7 @@ public class UserMapperImpl implements UserMapper {
         UserDTO userDTO = new UserDTO();
         userDTO.setUserName(userEntity.getUserName());
         userDTO.setPassword(userEntity.getPassword());
+        userDTO.setEmailVerify(userEntity.getIsEmailVerify());
         return userDTO;
     }
 

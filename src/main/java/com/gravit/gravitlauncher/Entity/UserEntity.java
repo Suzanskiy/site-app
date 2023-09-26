@@ -26,6 +26,8 @@ public class UserEntity {
     private String email;
     @Column (name = "password", nullable = false)
     private String password;
+    @Column (name = "is_email_verify", nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private Boolean isEmailVerify = false;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable (

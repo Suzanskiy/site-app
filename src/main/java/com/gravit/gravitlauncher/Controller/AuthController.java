@@ -3,7 +3,9 @@ package com.gravit.gravitlauncher.Controller;
 import com.gravit.gravitlauncher.Authentication.AuthenticationRequest;
 import com.gravit.gravitlauncher.Authentication.AuthenticationResponse;
 import com.gravit.gravitlauncher.Authentication.RegisterRequest;
+import com.gravit.gravitlauncher.Entity.UserEntity;
 import com.gravit.gravitlauncher.Services.AuthenticationService;
+import com.gravit.gravitlauncher.Services.UserService.UserServiceImpl;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthenticationService service;
+    private final UserServiceImpl userService;
 
     @PostMapping("/registration")
     public ResponseEntity<String> register(
@@ -35,5 +38,17 @@ public class AuthController {
         AuthenticationRequest request = new AuthenticationRequest(userName, password);
         AuthenticationResponse response = service.authenticate(request);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/verify-email")
+    public ResponseEntity<String> verifyEmail (@RequestParam String email) {
+
+        boolean isVerified = userService.verifyEmail(email);
+
+        if (isVerified) {
+            return ResponseEntity.ok("good");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ivalid email");
+        }
     }
 }

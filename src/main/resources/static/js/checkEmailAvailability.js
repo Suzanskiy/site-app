@@ -8,8 +8,8 @@ var validationForUserEmailLabel = [
         element: "emailMessage",
         color: "red" },
     {
-        check: () => userEmail.length >= 20,
-        message: "Довжина Вашого email повинна бути менша 20 символів",
+        check: () => userEmail.length >= 30,
+        message: "Довжина Вашого email повинна бути менша 30 символів",
         element: "#userEmailLengthWarning",
         color: "red" }
 ]

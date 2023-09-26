@@ -11,4 +11,7 @@ public interface UserService {
     Boolean loginUser(String userName, String rawPassword);
 
     Boolean isUserNameAvailable (String userName);
+
+    Boolean verifyEmail (String email);
+
 }
