@@ -1,9 +1,8 @@
 package com.gravit.gravitlauncher.Controller;
 
-import com.gravit.gravitlauncher.Excpetion.CustomException;
-import com.gravit.gravitlauncher.Excpetion.MailServiceException.MailServiceException;
+import com.gravit.gravitlauncher.Exception.CustomException;
+import com.gravit.gravitlauncher.Exception.MailServiceException.MailServiceException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;

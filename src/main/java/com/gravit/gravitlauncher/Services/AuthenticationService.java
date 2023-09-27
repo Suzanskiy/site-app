@@ -6,7 +6,7 @@ import com.gravit.gravitlauncher.Authentication.RegisterRequest;
 import com.gravit.gravitlauncher.DB.DAO.UserRepository;
 import com.gravit.gravitlauncher.DB.DTO.UserDTO;
 import com.gravit.gravitlauncher.Entity.UserEntity;
-import com.gravit.gravitlauncher.Excpetion.CustomException;
+import com.gravit.gravitlauncher.Exception.CustomException;
 import com.gravit.gravitlauncher.Mapper.UserMapper;
 import com.gravit.gravitlauncher.Services.MailService.MailSTMPService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.gravit.gravitlauncher.Excpetion.ErrorCode.*;
+import static com.gravit.gravitlauncher.Exception.ErrorCode.*;
 
 @Service
 @RequiredArgsConstructor

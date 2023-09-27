@@ -1,13 +1,13 @@
 package com.gravit.gravitlauncher.Services.MailService;
 
-import com.gravit.gravitlauncher.Excpetion.MailServiceException.MailServiceException;
+import com.gravit.gravitlauncher.Exception.MailServiceException.MailServiceException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import static com.gravit.gravitlauncher.Excpetion.MailServiceException.MailErrorCode.*;
+import static com.gravit.gravitlauncher.Exception.MailServiceException.MailErrorCode.*;
 
 @Service
 @RequiredArgsConstructor

@@ -43,6 +43,7 @@
     <div th:if="${message}" class="registration-message" th:text="${message}"></div>
     <h2>Register</h2>
     <form th:action="@{/api/registration}" method="post" id='register_form'>
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       <div class='field'>
         <label for='RegisterName'>Username</label>
         <input type='text' id="RegisterName" name='userName' maxlength="10" title='Username for registration' required onblur="checkUserNameAvailability()">
@@ -65,14 +66,14 @@
     </form>
   </div>
 </div>
-<!--<div id="verification-popup" style="display:none;">-->
-<!--  Your email has been verified!-->
-<!--</div>-->
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:src="@{/js/checkUserNameAvailability.js}" src="../static/js/checkUserNameAvailability.js"></script>
 <script th:src="@{/js/checkEmailAvailability.js}" src="../static/js/checkEmailAvailability.js"></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
 <script th:src="@{/js/index.js}" src="../static/js/index.js"></script>
 <script th:src="@{/js/emailVerification.js}" src="../static/js/emailVerification.js"></script>
+<script th:src="@{/js/registrationHandler.js}" src="../static/js/registrationHandler.js"></script>
 </body>
+
 </html>

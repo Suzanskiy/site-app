@@ -1,4 +1,4 @@
-package com.gravit.gravitlauncher.Excpetion.MailServiceException;
+package com.gravit.gravitlauncher.Exception.MailServiceException;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

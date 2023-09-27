@@ -1,4 +1,4 @@
-package com.gravit.gravitlauncher.Excpetion;
+package com.gravit.gravitlauncher.Exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.gravit.gravitlauncher.Excpetion;
+package com.gravit.gravitlauncher.Exception;
 
 public class CustomException extends RuntimeException{
 

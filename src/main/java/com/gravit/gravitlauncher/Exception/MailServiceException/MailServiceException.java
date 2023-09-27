@@ -1,6 +1,4 @@
-package com.gravit.gravitlauncher.Excpetion.MailServiceException;
-
-import lombok.RequiredArgsConstructor;
+package com.gravit.gravitlauncher.Exception.MailServiceException;
 
 public class MailServiceException extends RuntimeException{
 
