@@ -25,3 +25,8 @@ var validationForUserEmailLabel = [
         $("#userEmailLengthWarning").text("");
     }
 }
+$(document).ready(function() {
+    $("#email").on("input", function() {
+        checkEmailAvailability();
+    });
+});

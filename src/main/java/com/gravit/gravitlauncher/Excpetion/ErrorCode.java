@@ -13,7 +13,8 @@ public enum ErrorCode {
     EMAIL_IS_BAD("This %s email is bad!"),
     SMPT_FAILURE("Failed to send email"),
     USER_NAME_IS_ALREADY_EXIST("This - %s Username is already exist!"),
-    USER_NAME_NOT_FOUND("Username %s not found!");
+    USER_NAME_NOT_FOUND("Username %s not found!"),
+    USER_NAME_OR_PASSWORD_IS_BAD("Username ( %s) or password is BAD!");
 
 
     private String message;

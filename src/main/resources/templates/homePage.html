@@ -14,7 +14,6 @@
     <h2>Login</h2>
     <form th:action="@{/api/login}" method="post" id='login_form'>
       <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-
       <div class='field'>
         <label for='userName'>Username</label>
         <input type='text' id='userName' name='userName' maxlength="15" title='Username'>
@@ -24,6 +23,9 @@
         <label for='password'>Password</label>
         <input type='password' id='password' name='password' maxlength="15" title='Password'>
         <span id='valida' class='i i-close'></span>
+        <div th:if="${param.error}" class="error">
+          <p style="color: red;">Invalid username or password!</p>
+        </div>
       </div>
       <div class='field'>
         <input type='submit' id='do_login' value='Login'>

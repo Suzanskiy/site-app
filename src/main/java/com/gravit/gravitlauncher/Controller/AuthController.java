@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,11 @@ public class AuthController {
         service.register(request);
         return ResponseEntity.ok(userName + " Registration successful");
     }
-
+    @GetMapping("/isUserNameAvailable")
+    public ResponseEntity<Boolean> isUserNameAvailable(@RequestParam String userName){
+        boolean isAvalible = service.isUserNameAvailable(userName);
+        return new ResponseEntity<>(isAvalible, HttpStatus.OK);
+    }
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestParam String userName,
@@ -39,6 +44,7 @@ public class AuthController {
         AuthenticationResponse response = service.authenticate(request);
         return ResponseEntity.ok(response);
     }
+
 
     @GetMapping("/verify-email")
     public ResponseEntity<String> verifyEmail (@RequestParam String email) {

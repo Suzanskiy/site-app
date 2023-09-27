@@ -10,17 +10,21 @@ import com.gravit.gravitlauncher.Excpetion.CustomException;
 import com.gravit.gravitlauncher.Mapper.UserMapper;
 import com.gravit.gravitlauncher.Services.MailService.MailSTMPService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.gravit.gravitlauncher.Excpetion.ErrorCode.*;
@@ -77,6 +81,11 @@ public void register(RegisterRequest request) {
             .roles(roles)
             .build();
    }
+
+    public Boolean isUserNameAvailable(String userName) {
+        Optional<UserEntity> userEntity = userRepository.findByUserNameIgnoreCase(userName);
+        return userEntity.isEmpty();
+    }
 
     //------------------------CheckExcpetions------------------///
     private void sendConfirmMessageToEmail (RegisterRequest request) {

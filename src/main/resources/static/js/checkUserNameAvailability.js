@@ -1,37 +1,24 @@
 function checkUserNameAvailability() {
     clearAllMessages();
-    var userName = $("#ReguserName").val();
-    var validationForUserNameLabel = [
-        {
-            check: () => !userName,
-            message: "Поле є обов'язковим для заповнення!",
-            element: "#userNameMessage",
-            color: "red" },
-        {
-            check: () => userName.length >= 10,
-            message: "Довжина Вашого логіну повинна бути менша 10 символів",
-            element: "#userNameLengthWarning",
-            color: "red" },
-        ];
-    for (var i = 0; i < validationForUserNameLabel.length; i++) {
-        if (validationForUserNameLabel[i].check()) {
-            $(validationForUserNameLabel[i].element).text(validationForUserNameLabel[i].message).
-            css("color", validationForUserNameLabel[i].color);
-            return;
-        }
+    var userName = $("#RegisterName").val();
+    if (!userName) {
+        $("#userNameMessage").text("Поле є обов'язковим для заповнення!").css("color", "red");
+        return;
     }
-    $.get("/isUserNameAvailable", {userName: userName}, function (isAvailable){
-        if(isAvailable){
-            $("#userNameMessage").html("<strong" + userName + "</strong> Даний логін доступний для реєстрації")
-                .css("color", "green");
+    if (userName.length >= 10) {
+        $("#userNameLengthWarning").text("Довжина Вашого логіну повинна бути менша 10 символів").css("color", "red");
+        return;
+    }
+    $.get("/api/isUserNameAvailable", {userName: userName}, function (isAvailable) {
+        if (isAvailable) {
+            $("#userNameMessage").html("Даний логін доступний для реєстрації").css("color", "green");
         } else {
-            $("#userNameMessage").html("<strong>" + userName + "</strong> Даний логін вже зайнятий").
-                css("color", "red");
+            $("#userNameMessage").html("</strong> Даний логін вже зайнятий").css("color", "red");
         }
     });
-    function clearAllMessages() {
-        $("#userNameMessage").text("");
-        $("#userNameLengthWarning").text("");
-    }
+}
 
+function clearAllMessages() {
+    $("#userNameMessage").text("");
+    $("#userNameLengthWarning").text("");
 }
