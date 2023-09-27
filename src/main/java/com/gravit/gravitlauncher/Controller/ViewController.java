@@ -10,12 +10,10 @@ public class ViewController {
 
     @GetMapping({"/", "/api/login", "/api/registration"})
     public String showLoginPage() {
-        return "homePage.html";
+        return "homePage";
     }
     @GetMapping("/api/afterLoginPage")
-    @ResponseBody
             public String showAfterLoginPage() {
-        return "life is good";
+        return "afterLoginPage";
     }
-
 }

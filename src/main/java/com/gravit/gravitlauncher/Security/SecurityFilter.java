@@ -31,6 +31,7 @@ public class SecurityFilter {
         RequestMatcher loginMatcher = new AntPathRequestMatcher("/api/login");
         RequestMatcher regMatcher = new AntPathRequestMatcher("/api/registration");
         RequestMatcher afterLoginPage = new AntPathRequestMatcher("/api/afterLoginPage");
+        RequestMatcher logoutPage = new AntPathRequestMatcher("/api/logout", "POST");
        return http
                .csrf(csrf -> csrf.csrfTokenRequestHandler(new XorCsrfTokenRequestAttributeHandler())
                        .csrfTokenRepository(csrfTokenRepository)
@@ -44,6 +45,11 @@ public class SecurityFilter {
                        .passwordParameter("password")
                        .loginPage("/api/login")
                        .defaultSuccessUrl("/api/afterLoginPage", true))
+               .logout(logout -> logout.
+                       logoutRequestMatcher(logoutPage)
+                       .logoutSuccessUrl("/api/login")
+                       .invalidateHttpSession(true)
+                       .deleteCookies("JSESSIONID"))
                .sessionManagement(session  -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                .authenticationProvider(autenticaltionProvider)
                .build();
