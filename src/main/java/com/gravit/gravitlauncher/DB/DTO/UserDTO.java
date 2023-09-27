@@ -2,8 +2,6 @@ package com.gravit.gravitlauncher.DB.DTO;
 
 import jakarta.persistence.Table;
 import lombok.*;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 

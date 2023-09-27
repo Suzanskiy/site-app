@@ -2,7 +2,6 @@ package com.gravit.gravitlauncher.Services.MailService;
 
 import com.gravit.gravitlauncher.Excpetion.MailServiceException.MailServiceException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

@@ -5,12 +5,9 @@ import com.gravit.gravitlauncher.DB.DTO.UserDTO;
 import com.gravit.gravitlauncher.Entity.Role;
 import com.gravit.gravitlauncher.Entity.UserEntity;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;

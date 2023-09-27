@@ -9,5 +9,5 @@ const error = getQueryParam('error');
 if (emailVerified === 'true') {
     alert('Email has been successfully verified!');
 } else if (error) {
-    alert(`Помилка: ${error}`);
+    alert(`Error: ${error}`);
 }

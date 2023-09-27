@@ -10,17 +10,14 @@ import com.gravit.gravitlauncher.Excpetion.CustomException;
 import com.gravit.gravitlauncher.Mapper.UserMapper;
 import com.gravit.gravitlauncher.Services.MailService.MailSTMPService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
 import java.util.List;
@@ -63,13 +60,12 @@ public void register(RegisterRequest request) {
         checkUserNameAvailabilityNullAndIsEmpty(request);
         checkEmailAvailiabilityNullAndIsEmpty(request);
         checkUserNameAlreadyExists(request);
-        UserDTO user = UserDTO.builder()
+        return UserDTO.builder()
                 .userName(request.getUserName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .roleNames(List.of("USER"))
                 .build();
-        return user;
     }
 
    private AuthenticationResponse buildUserDetails (UserDetails userDetails) {

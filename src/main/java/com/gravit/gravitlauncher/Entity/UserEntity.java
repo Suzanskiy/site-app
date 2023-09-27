@@ -2,8 +2,6 @@ package com.gravit.gravitlauncher.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
