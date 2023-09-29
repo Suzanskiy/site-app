@@ -19,42 +19,20 @@ public class AuthController {
 
     private final AuthenticationService service;
 
-//    @PostMapping("/registration")
-//    public ResponseEntity<String> register(
-//            @RequestParam String userName,
-//            @RequestParam String email,
-//            @RequestParam String password) {
-//        RegisterRequest request = new RegisterRequest(userName, email, password);
-//        service.register(request);
-//        return ResponseEntity.ok(userName + " Registration successful");
-//    }
 
     @PostMapping("/registration")
-    public ResponseEntity<Map<String, Object>> register(
+    public ResponseEntity<?> register(
             @RequestParam String userName,
             @RequestParam String email,
             @RequestParam String password) {
         RegisterRequest request = new RegisterRequest(userName, email, password);
         try {
             service.register(request);
-            Map<String, Object> response = Map.of(
-                    "success", true,
-                    "message", userName + " Registration successful"
-            );
-            return ResponseEntity.ok(response);
+            return createResponse(userName, true, userName + " Registration successful", HttpStatus.OK);
         } catch (CustomException e) {
-            Map<String, Object> response = Map.of(
-                    "success", false,
-                    "message", e.getMessage()
-            );
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (Exception e) {
-            Map<String, Object> response = Map.of(
-                    "success", false,
-                    "message", "Internal Server Error"
-            );
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
+            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);        }
     }
 
     @GetMapping("/isUserNameAvailable")
@@ -69,5 +47,16 @@ public class AuthController {
         AuthenticationRequest request = new AuthenticationRequest(userName, password);
         AuthenticationResponse response = service.authenticate(request);
         return ResponseEntity.ok(response);
+    }
+    private ResponseEntity<?> createResponse (String userName,
+                                                                   boolean success,
+                                                                   String message,
+                                                                   HttpStatus status) {
+       AuthenticationResponse response = AuthenticationResponse.builder()
+                .userName(userName)
+                .success(success)
+                .message(message)
+                .build();
+        return new ResponseEntity<>(response, status);
     }
 }

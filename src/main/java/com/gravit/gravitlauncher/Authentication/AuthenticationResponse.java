@@ -15,5 +15,6 @@ public class AuthenticationResponse {
     private String userName;
     private Collection<String> roles;
     private String message;
+    private boolean success;
 
 }
